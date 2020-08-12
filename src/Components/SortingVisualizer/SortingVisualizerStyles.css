@@ -1,6 +1,9 @@
 .main {
-  display: grid;
-  grid-template-columns: 1.5fr 5fr;
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .side-bar {
@@ -8,7 +11,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
+  width: 25%;
 }
 .side-bar-container {
   display: flex;
@@ -18,29 +22,83 @@
   height: 60%;
   margin: auto 0;
 }
+button {
+  border: 2px solid var(--icon-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .button {
   padding: 10px;
-  background-color: var(--icon-color);
+  background-color: var(--bg-color);
   margin: 0.5rem;
-  border: none;
+  border: 1px solid var(--icon-color);
   border-radius: 5px;
-  height: 2rem;
+  height: auto;
   cursor: pointer;
+}
+.generate {
+  background-color: var(--icon-color);
+  font-size: 1rem;
+  text-align: center;
+}
+h3 {
+  height: auto;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+h4 {
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+.size,
+.speed {
+  height: auto;
+  padding: 1rem;
+}
+.speed div,
+.size div {
+  display: inline;
+}
+.speed div span,
+.size div span {
+  font-size: 1rem;
+  padding: 10px;
+  font-weight: 600;
+}
+.speed div button,
+.size div button {
+  height: auto;
+  padding: 0 5px;
+  margin-right: 5px;
+  font-size: 1rem;
 }
 
 .visualizer-area {
   background-color: white;
   position: relative;
+  width: 75%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.title {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: auto;
+}
+.title p {
+  height: auto;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
 .array-bar-container {
   position: absolute;
-  top: 50%;
+  bottom: 20%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   height: auto;
   width: 90%;
   margin: 0 auto;
@@ -50,6 +108,6 @@
 }
 .array-bar {
   display: inline-block;
-  background-color: blueviolet;
-  margin-right: 2px;
+  background-color: var(--icon-color);
+  margin-right: 3px;
 }

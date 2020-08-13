@@ -6,7 +6,6 @@ export function bubbleSort(arr) {
     for (let j = 0; j < i - 1; j++) {
       animations.push([j, j + 1]);
       if (arr[j] > arr[j + 1]) {
-        animations.push([j, j + 1]);
         noSwaps = false;
       }
     }

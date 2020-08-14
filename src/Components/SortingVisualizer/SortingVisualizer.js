@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./SortingVisualizerStyles.css";
 import { mergeSort as animateMergeSort } from "../../Algorithms/MergeSortAlgorithm/MergeSort";
-import { insertionSort as animateInsertionSort } from "../../Algorithms/InsertionSort/InsertionSort";
 import { doBubbleSort } from "../SortingFunctions/BubbleSort";
 import { doSelectionSort } from "../SortingFunctions/SelectionSort";
+import { doInsertionSort } from "../SortingFunctions/InsertionSort";
 import {
   getRandomInt,
   increaseArrayLength,
@@ -11,7 +11,6 @@ import {
   decreaseArrayLength,
   decreaseSpeed,
 } from "../HelperFunctions/HelperFunctions";
-import { GREEN, PURPLE, TEAL } from "../HelperFunctions/Colors";
 
 export default function SortingVisualizer() {
   let [array, setArray] = useState([]);
@@ -118,74 +117,14 @@ export default function SortingVisualizer() {
 
   const callInsertionSort = async () => {
     setIsSorting(true);
-    //const insertion = animateInsertionSort(array);
+    setTitle("Insertion Sort");
     const arrayBars = document.getElementsByClassName("array-bar");
-    //console.log(insertion);
-
-    for (let i = 0; i < arrayBars.length; i++) {
-      console.log("i=", { i });
-      let compareVal = parseInt(arrayBars[i].style.height);
-      let compareStyle = arrayBars[i].style;
-      let prevVal;
-      let prevStyle;
-      if (i !== 0) {
-        prevVal = parseInt(arrayBars[i - 1].style.height);
-        prevStyle = arrayBars[i - 1].style;
-      } else {
-        prevVal = 0;
-      }
-      compareStyle.backgroundColor = GREEN;
-      console.log("before loop=", { i, compareVal, prevVal });
-      await new Promise((resolve) => setTimeout(resolve, `${speed}`));
-
-      for (let j = i - 1; j >= 0 && compareVal < prevVal; j--) {
-        console.log("i, j=", { i, j });
-        console.log("Inside loop=", { j, compareVal, prevVal });
-        compareStyle.height = `${prevVal}px`;
-        prevStyle.height = `${compareVal}px`;
-
-        console.log("swapped!--------");
-
-        compareStyle.backgroundColor = TEAL;
-        compareStyle = prevStyle;
-        compareStyle.backgroundColor = GREEN;
-        console.log("prev value changed", prevVal);
-
-        if (j !== 0) {
-          prevVal = parseInt(arrayBars[j - 1].style.height);
-          prevStyle = arrayBars[j - 1].style;
-        } else {
-          prevVal = parseInt(arrayBars[j].style.height);
-          prevStyle = arrayBars[j].style;
-        }
-        await new Promise((resolve) => setTimeout(resolve, `${speed}`));
-      }
-      compareStyle.backgroundColor = TEAL;
-    }
+    doInsertionSort({
+      arrayBars,
+      speed,
+      setIsSorting,
+    });
   };
-
-  /*
-    for (let i = 0; i < arrayBars.length; i++) {
-      const [compareIdx, prevIdx, currentVal] = insertion[i];
-
-      let compareVal = parseInt(arrayBars[compareIdx].style.height);
-      let compareStyle = arrayBars[compareIdx].style;
-
-      let prevVal = parseInt(arrayBars[prevIdx].style.height);
-      let prevStyle = arrayBars[prevIdx].style;
-
-      // let currentVal = parseInt(arrayBars[currentIdx].style.height);
-      // let currentStyle = arrayBars[currentIdx].style;
-
-      if (currentVal < prevVal) {
-        console.log("less", { compareVal, prevVal, currentVal });
-        compareStyle.height = `${prevVal}px`;
-        prevStyle.height = `${compareVal}px`;
-
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-      }
-    }
-   */
 
   return (
     <div className="main">

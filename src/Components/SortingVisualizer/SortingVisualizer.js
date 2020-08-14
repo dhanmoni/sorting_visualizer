@@ -11,15 +11,16 @@ import {
   decreaseArrayLength,
   decreaseSpeed,
 } from "../HelperFunctions/HelperFunctions";
+import Sidebar from "../Sidebar/Sidebar";
 
 export default function SortingVisualizer() {
   let [array, setArray] = useState([]);
   const [maxlength, setLength] = useState(20);
-  const [maxHeight, setHeightNum] = useState(500);
+  const [maxHeight, setMaxHeight] = useState(400);
   const [speed, setSpeed] = useState(300);
   const [barWidth, setBarWidth] = useState(5);
   const [isSorting, setIsSorting] = useState(false);
-  const [title, setTitle] = useState(false);
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
     resetArray();
@@ -42,6 +43,7 @@ export default function SortingVisualizer() {
     setArray([]);
     setTitle("");
     setIsSorting(false);
+
     for (let i = 0; i < maxlength; i++) {
       // const randomNum = [20, 15, 78, 31, 43, 10];
       // setArray(randomNum);
@@ -83,14 +85,6 @@ export default function SortingVisualizer() {
     });
   };
 
-  const callMergeSort = () => {
-    setIsSorting(true);
-    setTitle("Merge Sort");
-    const merge = animateMergeSort(array);
-    //setArray(merge);
-    array.splice(0, array.length, ...merge);
-  };
-
   const callBubbleSort = () => {
     setIsSorting(true);
     setTitle("Bubble Sort");
@@ -126,91 +120,57 @@ export default function SortingVisualizer() {
     });
   };
 
+  const callMergeSort = () => {
+    setIsSorting(true);
+    setTitle("Merge Sort");
+    const merge = animateMergeSort(array);
+    console.log(merge);
+  };
+
+  const callQuickSort = () => {
+    setIsSorting(true);
+    setTitle("Quick Sort");
+    //const quick = animateMergeSort(array);
+    //setArray(merge);
+    //array.splice(0, array.length, ...merge);
+  };
+
+  const toggleBar = () => {
+    const sideBar = document.getElementsByClassName("side-bar");
+    const visualizerArea = document.getElementsByClassName("visualizer-area");
+
+    if (visualizerArea[0].style.width !== `${100}vw`) {
+      sideBar[0].style.marginLeft = `${-25}vw`;
+      visualizerArea[0].style.width = `${100}vw`;
+    } else {
+      sideBar[0].style.marginLeft = `${0}vw`;
+      visualizerArea[0].style.width = `${75}vw`;
+    }
+  };
+
   return (
     <div className="main">
-      <div className="side-bar">
-        <div className="side-bar-container">
-          <h3>Sorting Visualizer</h3>
-          <div className="speed">
-            <h4>Speed: </h4>
-            <div>
-              <button
-                className="toggleButton"
-                onClick={() => callDecreaseSpeed("twice")}
-              >
-                --
-              </button>
-              <button
-                className="toggleButton"
-                onClick={() => callDecreaseSpeed("once")}
-              >
-                -
-              </button>
-              <span>{speed}</span>
-              <button
-                className="toggleButton"
-                onClick={() => callIncreaseSpeed("once")}
-              >
-                +
-              </button>
-              <button
-                className="toggleButton"
-                onClick={() => callIncreaseSpeed("twice")}
-              >
-                ++
-              </button>
-            </div>
-          </div>
-          <div className="size">
-            <h4>Size of Array: </h4>
-            <div>
-              <button
-                className="toggleButton"
-                onClick={() => callDecreaseArrayLength("twice")}
-              >
-                --
-              </button>
-              <button
-                className="toggleButton"
-                onClick={() => callDecreaseArrayLength("once")}
-              >
-                -
-              </button>
-              <span>{maxlength}</span>
-              <button
-                className="toggleButton"
-                onClick={() => callIncreaseArrayLength("once")}
-              >
-                +
-              </button>
-              <button
-                className="toggleButton"
-                onClick={() => callIncreaseArrayLength("twice")}
-              >
-                ++
-              </button>
-            </div>
-          </div>
-          <button className="button generate" onClick={resetArray}>
-            Generate new array
-          </button>
-
-          <button className="button toggleButton" onClick={callBubbleSort}>
-            Bubble Sort
-          </button>
-
-          <button className="button toggleButton" onClick={callSelectionSort}>
-            Selection Sort
-          </button>
-          <button className="button toggleButton" onClick={callInsertionSort}>
-            Insertion Sort
-          </button>
-          <button className="button toggleButton" onClick={callMergeSort}>
-            Merge Sort
-          </button>
-        </div>
-      </div>
+      <Sidebar
+        callDecreaseSpeed={callDecreaseSpeed}
+        callIncreaseSpeed={callIncreaseSpeed}
+        callDecreaseArrayLength={callDecreaseArrayLength}
+        callIncreaseArrayLength={callIncreaseArrayLength}
+        resetArray={resetArray}
+        callBubbleSort={callBubbleSort}
+        callInsertionSort={callInsertionSort}
+        callSelectionSort={callSelectionSort}
+        callMergeSort={callMergeSort}
+        callQuickSort={callQuickSort}
+        speed={speed}
+        maxlength={maxlength}
+        isSorting={isSorting}
+      />
       <div className="visualizer-area">
+        <div className="header">
+          <i className="material-icons" onClick={toggleBar}>
+            menu
+          </i>
+        </div>
         <div className="array-bar-container">
           {array.map((val, idx) => {
             return (
@@ -222,6 +182,7 @@ export default function SortingVisualizer() {
             );
           })}
         </div>
+
         <div className="title">
           <p>{title}</p>
         </div>

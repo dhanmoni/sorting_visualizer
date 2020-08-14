@@ -2,10 +2,10 @@
   margin: 0;
   padding: 0;
   height: 100vh;
+  font-family: "Quicksand", sans-serif;
 }
 
 :root {
-  --text-color: #717579;
   --primary-color: #35f3e0;
   --header-size: 1.5rem;
   --main-text-size: 1rem;

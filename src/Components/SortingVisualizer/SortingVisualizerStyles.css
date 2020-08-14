@@ -28,6 +28,10 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  filter: brightness(90%);
+}
+
 .button {
   padding: 10px;
   background-color: var(--bg-color);
@@ -36,12 +40,17 @@ button {
   border-radius: 5px;
   height: auto;
   cursor: pointer;
+  font-weight: 600;
 }
+
 .generate {
   background-color: var(--primary-color);
   font-size: 1rem;
   text-align: center;
+  font-weight: 600;
+  transition: all ease 0.2s;
 }
+
 h3 {
   height: auto;
   font-size: 2rem;

@@ -5,7 +5,7 @@ const getRandomInt = (min, max) => {
 };
 
 const decreaseSpeed = ({ speed, setSpeed, data }) => {
-  if (speed < 1) return false;
+  if (speed < 2) return false;
   speed < 15
     ? setSpeed((prevCount) => prevCount - 1)
     : data === "twice"
@@ -16,8 +16,10 @@ const decreaseSpeed = ({ speed, setSpeed, data }) => {
 };
 
 const increaseSpeed = ({ speed, setSpeed, data }) => {
-  if (speed === 1000) return false;
-  data === "twice"
+  if (speed >= 1000) return false;
+  speed < 15
+    ? setSpeed((prevCount) => prevCount + 1)
+    : data === "twice"
     ? speed < 900
       ? setSpeed((prevCount) => prevCount + 100)
       : setSpeed((prevCount) => prevCount + 10)

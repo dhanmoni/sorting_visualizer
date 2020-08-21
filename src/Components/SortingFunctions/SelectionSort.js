@@ -23,11 +23,9 @@ export const doSelectionSort = async (props) => {
       }
       minimumVal = barTwoVal;
       minimumStyle = barTwoStyle;
-      console.log("new minimum", minimumVal);
 
       await new Promise((resolve) => setTimeout(resolve, `${speed}`));
     } else {
-      console.log("hello", barTwoVal);
       await new Promise((resolve) => setTimeout(resolve, `${speed}`));
       barTwoStyle.backgroundColor = TEAL;
     }

@@ -138,6 +138,7 @@ h4 {
   display: inline-block;
   background-color: var(--primary-color);
   margin-right: 3px;
+  /* transition: all ease 0.05s; */
 }
 
 .header {

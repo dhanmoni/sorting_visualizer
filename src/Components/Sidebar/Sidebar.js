@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Sidebar(props) {
-  console.log(props);
   const {
     callDecreaseSpeed,
     callIncreaseSpeed,
@@ -36,7 +35,7 @@ export default function Sidebar(props) {
             >
               -
             </button>
-            <span>{speed}</span>
+            <span id="speedNum">{speed} ms</span>
             <button
               className="toggleButton"
               onClick={() => callIncreaseSpeed("once")}

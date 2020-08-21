@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./SortingVisualizerStyles.css";
-import { mergeSort as animateMergeSort } from "../../Algorithms/MergeSortAlgorithm/MergeSort";
+import { getMergeSortAnimations as animateMergeSort } from "../../Algorithms/MergeSortAlgorithm/MergeSort";
+import {
+  quickSort as animateQuickSort,
+  quickSort,
+} from "../../Algorithms/QuickSortAlgorithm/QuickSort";
 import { doBubbleSort } from "../SortingFunctions/BubbleSort";
 import { doSelectionSort } from "../SortingFunctions/SelectionSort";
 import { doInsertionSort } from "../SortingFunctions/InsertionSort";
@@ -12,10 +16,11 @@ import {
   decreaseSpeed,
 } from "../HelperFunctions/HelperFunctions";
 import Sidebar from "../Sidebar/Sidebar";
+import { TEAL, GREEN, PURPLE, RED } from "../HelperFunctions/Colors";
 
 export default function SortingVisualizer() {
   let [array, setArray] = useState([]);
-  const [maxlength, setLength] = useState(20);
+  const [maxlength, setLength] = useState(5);
   const [maxHeight, setMaxHeight] = useState(400);
   const [speed, setSpeed] = useState(300);
   const [barWidth, setBarWidth] = useState(5);
@@ -45,10 +50,10 @@ export default function SortingVisualizer() {
     setIsSorting(false);
 
     for (let i = 0; i < maxlength; i++) {
-      // const randomNum = [20, 15, 78, 31, 43, 10];
-      // setArray(randomNum);
-      const randomNum = getRandomInt(5, maxHeight);
-      setArray((array) => [...array, randomNum]);
+      const randomNum = [50, 35, 178, 31, 200, 20];
+      setArray(randomNum);
+      //const randomNum = getRandomInt(5, maxHeight);
+      //setArray((array) => [...array, randomNum]);
     }
     if (maxlength > 50) setBarWidth(5);
     if (maxlength < 50) setBarWidth(15);
@@ -120,19 +125,57 @@ export default function SortingVisualizer() {
     });
   };
 
-  const callMergeSort = () => {
+  const callMergeSort = async () => {
     setIsSorting(true);
     setTitle("Merge Sort");
-    const merge = animateMergeSort(array);
-    console.log(merge);
+    const arrayBars = document.getElementsByClassName("array-bar");
+
+    const merged = animateMergeSort(array);
+    console.log(merged);
+    for (let i = 0; i < merged.length; i++) {
+      console.log({ i });
+      // const arrayBars = document.getElementsByClassName("array-bar");
+      const isColorChange = i % 3 !== 2;
+      if (isColorChange) {
+        const [barOneIdx, barTwoIdx] = merged[i];
+        const barOneStyle = arrayBars[barOneIdx].style;
+        const barTwoStyle = arrayBars[barTwoIdx].style;
+        const color = i % 3 === 0 ? GREEN : PURPLE;
+        setTimeout(() => {
+          barOneStyle.backgroundColor = color;
+          barTwoStyle.backgroundColor = color;
+        }, speed);
+      } else {
+        //await new Promise((resolve) => setTimeout(resolve, 1000));
+        setTimeout(() => {
+          const [barOneIdx, newHeight] = merged[i];
+          const barOneStyle = arrayBars[barOneIdx].style;
+          barOneStyle.height = `${newHeight}px`;
+        }, speed);
+      }
+    }
+
+    //setArray(merged);
   };
 
-  const callQuickSort = () => {
+  const callQuickSort = async () => {
     setIsSorting(true);
     setTitle("Quick Sort");
-    //const quick = animateMergeSort(array);
-    //setArray(merge);
-    //array.splice(0, array.length, ...merge);
+    let smaller = [];
+    const swap = (arr, idx1, idx2) => {
+      [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+    };
+    for (let i = 0; i < array.length; i++) {
+      if (array.length <= 1) return array;
+      let pivot = array[0];
+      let pivotIdx = array[0];
+      let barTwo = array[i + 1];
+      if (barTwo < pivot) {
+        pivotIdx++;
+        swap(array, pivotIdx, barTwo);
+      }
+      swap(array, pivot, pivotIdx);
+    }
   };
 
   const toggleBar = () => {
@@ -177,7 +220,10 @@ export default function SortingVisualizer() {
               <div
                 key={idx}
                 className="array-bar"
-                style={{ height: `${val}px`, width: `${barWidth}px` }}
+                style={{
+                  height: `${val}px`,
+                  width: `${barWidth}px`,
+                }}
               ></div>
             );
           })}

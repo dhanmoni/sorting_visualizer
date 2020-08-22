@@ -14,7 +14,7 @@ import Sidebar from "../Sidebar/Sidebar";
 
 export default function SortingVisualizer() {
   let [array, setArray] = useState([]);
-  const [maxlength, setLength] = useState(5);
+  const [maxlength, setLength] = useState(75);
   const [maxHeight, setMaxHeight] = useState(400);
   const [speed, setSpeed] = useState(300);
   const [barWidth, setBarWidth] = useState(5);

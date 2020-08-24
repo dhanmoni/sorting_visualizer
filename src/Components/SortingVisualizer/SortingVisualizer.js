@@ -11,6 +11,7 @@ import {
   decreaseSpeed,
 } from "../HelperFunctions/HelperFunctions";
 import Sidebar from "../Sidebar/Sidebar";
+import useWindowDimensions from "../HelperFunctions/WindowDimension";
 
 export default function SortingVisualizer() {
   let [array, setArray] = useState([]);
@@ -20,9 +21,18 @@ export default function SortingVisualizer() {
   const [barWidth, setBarWidth] = useState(5);
   const [isSorting, setIsSorting] = useState(false);
   const [title, setTitle] = useState("");
-
+  const { height, width } = useWindowDimensions();
   useEffect(() => {
     resetArray();
+    if (width <= 600) {
+      setLength(30);
+    }
+    if (height <= 600) {
+      setMaxHeight(350);
+    }
+    if (height > 800) {
+      setMaxHeight(500);
+    }
   }, []);
 
   useEffect(() => {
@@ -73,6 +83,7 @@ export default function SortingVisualizer() {
       data,
       maxlength,
       setLength,
+      width,
     });
   };
 

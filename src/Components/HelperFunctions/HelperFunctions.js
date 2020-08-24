@@ -35,10 +35,16 @@ const decreaseArrayLength = ({ maxlength, setLength, data }) => {
     : setLength((prevLen) => prevLen - 5);
 };
 
-const increaseArrayLength = ({ maxlength, setLength, data }) => {
-  if (maxlength >= 150) return false;
+const increaseArrayLength = ({ maxlength, setLength, data, width }) => {
+  let limit = 150;
+  let bound = 130;
+  if (width <= 600) {
+    limit = 50;
+    bound = 30;
+  }
+  if (maxlength >= limit) return false;
   data === "twice"
-    ? maxlength < 130
+    ? maxlength < bound
       ? setLength((prevLen) => prevLen + 20)
       : setLength((prevLen) => prevLen + 5)
     : setLength((prevLen) => prevLen + 5);

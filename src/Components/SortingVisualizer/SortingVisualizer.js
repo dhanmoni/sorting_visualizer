@@ -25,7 +25,7 @@ export default function SortingVisualizer() {
   useEffect(() => {
     resetArray();
     if (width <= 600) {
-      setLength(30);
+      setLength(20);
     }
     if (height <= 600) {
       setMaxHeight(350);

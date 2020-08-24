@@ -178,22 +178,28 @@ h4 {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 601px) {
+  .main {
+    height: 90vh;
+  }
+  .side-bar-container {
+    height: 80%;
+  }
   .side-bar {
     width: 50vw;
   }
   .button {
     padding: 4px;
-    margin: 0.1rem;
+    margin: 0.4rem 0.1rem;
   }
 
   .generate {
     font-size: 0.8rem;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.5rem 0.2rem;
   }
   h3 {
     height: auto;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
   }
   h4 {
@@ -215,12 +221,6 @@ h4 {
     padding: 0 2px;
     margin-right: 2px;
     font-size: 0.8rem;
-  }
-  .array-bar-container {
-    bottom: 10%;
-  }
-  .title {
-    bottom: 2%;
   }
   .title p {
     font-size: 0.8rem;

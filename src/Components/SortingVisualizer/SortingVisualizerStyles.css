@@ -69,11 +69,12 @@ h3 {
 h4 {
   height: auto;
   margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 .size,
 .speed {
   height: auto;
-  padding: 1rem;
+  padding: 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,7 +87,7 @@ h4 {
 .speed div span,
 .size div span {
   font-size: 1rem;
-  padding: 10px;
+  padding: 8px;
   font-weight: 600;
 }
 .speed div button,
@@ -94,7 +95,7 @@ h4 {
   height: auto;
   padding: 0 5px;
   margin-right: 5px;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .visualizer-area {
@@ -138,7 +139,6 @@ h4 {
   display: inline-block;
   background-color: var(--primary-color);
   margin-right: 3px;
-  /* transition: all ease 0.05s; */
 }
 
 .header {
@@ -175,5 +175,57 @@ h4 {
   }
   .visualizer-area {
     width: 100vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .side-bar {
+    width: 50vw;
+  }
+  .button {
+    padding: 4px;
+    margin: 0.1rem;
+  }
+
+  .generate {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+  h3 {
+    height: auto;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  h4 {
+    height: auto;
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+  .size,
+  .speed {
+    padding: 0.8rem;
+  }
+  .speed div span,
+  .size div span {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+  .speed div button,
+  .size div button {
+    padding: 0 2px;
+    margin-right: 2px;
+    font-size: 0.8rem;
+  }
+  .array-bar-container {
+    bottom: 10%;
+  }
+  .title {
+    bottom: 2%;
+  }
+  .title p {
+    font-size: 0.8rem;
+  }
+  .array-bar {
+    margin-right: 2px;
   }
 }

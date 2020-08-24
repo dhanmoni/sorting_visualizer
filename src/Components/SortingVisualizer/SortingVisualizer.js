@@ -14,7 +14,7 @@ import Sidebar from "../Sidebar/Sidebar";
 
 export default function SortingVisualizer() {
   let [array, setArray] = useState([]);
-  const [maxlength, setLength] = useState(75);
+  const [maxlength, setLength] = useState(50);
   const [maxHeight, setMaxHeight] = useState(400);
   const [speed, setSpeed] = useState(300);
   const [barWidth, setBarWidth] = useState(5);
@@ -124,11 +124,21 @@ export default function SortingVisualizer() {
     const visualizerArea = document.getElementsByClassName("visualizer-area");
 
     if (visualizerArea[0].style.width !== `${100}vw`) {
-      sideBar[0].style.marginLeft = `${-25}vw`;
-      visualizerArea[0].style.width = `${100}vw`;
+      if (window.innerWidth <= 600) {
+        sideBar[0].style.marginLeft = `${-50}vw`;
+        visualizerArea[0].style.width = `${100}vw`;
+      } else {
+        sideBar[0].style.marginLeft = `${-25}vw`;
+        visualizerArea[0].style.width = `${100}vw`;
+      }
     } else {
-      sideBar[0].style.marginLeft = `${0}vw`;
-      visualizerArea[0].style.width = `${75}vw`;
+      if (window.innerWidth <= 600) {
+        sideBar[0].style.marginLeft = `${0}vw`;
+        visualizerArea[0].style.width = `${50}vw`;
+      } else {
+        sideBar[0].style.marginLeft = `${0}vw`;
+        visualizerArea[0].style.width = `${75}vw`;
+      }
     }
   };
 

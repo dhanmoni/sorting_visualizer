@@ -14,7 +14,7 @@ npm install
 
 It will install the required dependencies.
 
-Create a folder named `config` inside `src` folder and create a file named `FirebaseConfig`, put your firebase credentials inside that file.
+Create a folder named `config` inside `src` folder and create a file named `FirebaseConfig.js`, put your firebase credentials inside that file.
 
 To run the frontend on localhost, run:
 
@@ -25,10 +25,13 @@ To run the frontend on localhost, run:
 ## About
 
 It is an algorithm visualiser application. You can see how Bubble sort, insertion sort and selection sort work. You can configure the size of array and the time interval/speed of the animation. More algorithms will be added soon!
-
+### Main page
 ![](https://res.cloudinary.com/dmn19/image/upload/v1598287709/Screenshot_164.png)
+### Sorting 
 ![](https://res.cloudinary.com/dmn19/image/upload/v1598287707/Screenshot_165.png)
+### Responsive
 ![](https://res.cloudinary.com/dmn19/image/upload/v1598287968/Screenshot_170.png)
+### Resizable
 ![](https://res.cloudinary.com/dmn19/image/upload/v1598287707/Screenshot_168.png)
 
 ## Contributing

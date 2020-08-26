@@ -1,4 +1,4 @@
-import { selectionSort as animateSelectionSort } from "../../Algorithms/SelectionSort/SelectionSort";
+import { selectionSort as animateSelectionSort } from "../Algorithms/SelectionSort/SelectionSort";
 import { GREEN, TEAL, PURPLE, RED } from "../HelperFunctions/Colors";
 
 export const doSelectionSort = async (props) => {

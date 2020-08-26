@@ -1,38 +1,36 @@
 import React, { useState, useEffect } from "react";
 import "./SortingVisualizerStyles.css";
-import { doBubbleSort } from "../SortingFunctions/BubbleSort";
-import { doSelectionSort } from "../SortingFunctions/SelectionSort";
-import { doInsertionSort } from "../SortingFunctions/InsertionSort";
+import { doBubbleSort } from "../../SortingFunctions/BubbleSort";
+import { doSelectionSort } from "../../SortingFunctions/SelectionSort";
+import { doInsertionSort } from "../../SortingFunctions/InsertionSort";
 import {
   getRandomInt,
   increaseArrayLength,
   increaseSpeed,
   decreaseArrayLength,
   decreaseSpeed,
-} from "../HelperFunctions/HelperFunctions";
+} from "../../HelperFunctions/HelperFunctions";
 import Sidebar from "../Sidebar/Sidebar";
-import useWindowDimensions from "../HelperFunctions/WindowDimension";
+import useWindowDimensions from "../../HelperFunctions/WindowDimension";
+
+const setInitailMaxLength = (width) => {
+  return width <= 600 ? 20 : 50;
+};
+const setInitailMaxHeight = (height) => {
+  return height <= 600 ? 320 : height >= 800 ? 500 : 400;
+};
 
 export default function SortingVisualizer() {
+  const { height, width } = useWindowDimensions();
   let [array, setArray] = useState([]);
-  const [maxlength, setLength] = useState(50);
-  const [maxHeight, setMaxHeight] = useState(400);
+  const [maxlength, setLength] = useState(setInitailMaxLength(width));
+  const [maxHeight, setMaxHeight] = useState(setInitailMaxHeight(height));
   const [speed, setSpeed] = useState(300);
   const [barWidth, setBarWidth] = useState(5);
   const [isSorting, setIsSorting] = useState(false);
   const [title, setTitle] = useState("");
-  const { height, width } = useWindowDimensions();
   useEffect(() => {
     resetArray();
-    if (width <= 600) {
-      setLength(20);
-    }
-    if (height <= 600) {
-      setMaxHeight(350);
-    }
-    if (height > 800) {
-      setMaxHeight(500);
-    }
   }, []);
 
   useEffect(() => {
@@ -170,7 +168,7 @@ export default function SortingVisualizer() {
       />
       <div className="visualizer-area">
         <div className="header">
-          <i className="material-icons" onClick={toggleBar}>
+          <i className="material-icons menu-icons" onClick={toggleBar}>
             menu
           </i>
         </div>

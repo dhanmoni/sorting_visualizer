@@ -1,4 +1,4 @@
-import { bubbleSort as animateBubbleSort } from "../../Algorithms/BubbleSortAlgorithm/BubbleSort";
+import { bubbleSort as animateBubbleSort } from "../Algorithms/BubbleSortAlgorithm/BubbleSort";
 import { GREEN, TEAL } from "../HelperFunctions/Colors";
 
 export const doBubbleSort = async (props) => {

@@ -11,6 +11,7 @@ import {
   decreaseSpeed,
 } from "../../HelperFunctions/HelperFunctions";
 import Sidebar from "../Sidebar/Sidebar";
+import InfoSection from "../InfoSection/InfoSection";
 import useWindowDimensions from "../../HelperFunctions/WindowDimension";
 
 const setInitailMaxLength = (width) => {
@@ -52,7 +53,7 @@ export default function SortingVisualizer() {
     setIsSorting(false);
 
     for (let i = 0; i < maxlength; i++) {
-      // const randomNum = [100, 70, 40, 10, 80, 33];
+      // const randomNum = [9, 18, 24, 10, 39, 22, 12, 49, 29];
       // setArray(randomNum);
       const randomNum = getRandomInt(5, maxHeight);
       setArray((array) => [...array, randomNum]);
@@ -151,6 +152,15 @@ export default function SortingVisualizer() {
     }
   };
 
+  const toggleInfo = () => {
+    const infoSection = document.getElementsByClassName("info-section");
+    if (infoSection[0].style.marginLeft === `${0}vw`) {
+      infoSection[0].style.marginLeft = `${-85}vw`;
+    } else {
+      infoSection[0].style.marginLeft = `${0}vw`;
+    }
+  };
+
   return (
     <div className="main">
       <Sidebar
@@ -162,14 +172,19 @@ export default function SortingVisualizer() {
         callBubbleSort={callBubbleSort}
         callInsertionSort={callInsertionSort}
         callSelectionSort={callSelectionSort}
+        // callQuickSort={callQuickSort}
         speed={speed}
         maxlength={maxlength}
         isSorting={isSorting}
       />
+      <InfoSection />
       <div className="visualizer-area">
         <div className="header">
           <i className="material-icons menu-icons" onClick={toggleBar}>
             menu
+          </i>
+          <i className="material-icons menu-icons" onClick={toggleInfo}>
+            code
           </i>
         </div>
         <div className="array-bar-container">

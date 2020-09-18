@@ -49,6 +49,25 @@
 //   );
 // });
 
+// const staticCacheName = "site-static";
+// const dynamicCacheName = "site-dynamic";
+// const assets = [
+//   "/",
+//   "/index.html",
+//   "../src/App.js",
+//   "../src/index.js",
+//   "../src/index.css",
+//   "../src/Components/SortingVisualizer/index.js",
+//   "../src/Components/Sidebar/Sidebar.js",
+//   "../src/Components/InfoSection/InfoSection.js",
+//   "../src/Components/InfoSection/SelectionSortCode.js",
+//   "../src/Components/InfoSection/InsertionSortCode.js",
+//   "../src/Components/InfoSection/BubbleSortCode.js",
+//   "../src/Components/InfoSection/CodeStyles.css",
+//   "https://fonts.googleapis.com/icon?family=Material+Icons",
+//   "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap",
+// ];
+
 const staticCacheName = "site-static";
 const dynamicCacheName = "site-dynamic";
 const assets = [
@@ -59,6 +78,11 @@ const assets = [
   "../src/index.css",
   "../src/Components/SortingVisualizer/index.js",
   "../src/Components/Sidebar/Sidebar.js",
+  "../src/Components/InfoSection/InfoSection.js",
+  "../src/Components/InfoSection/SelectionSortCode.js",
+  "../src/Components/InfoSection/InsertionSortCode.js",
+  "../src/Components/InfoSection/BubbleSortCode.js",
+  "../src/Components/InfoSection/CodeStyles.css",
   "https://fonts.googleapis.com/icon?family=Material+Icons",
   "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap",
 ];

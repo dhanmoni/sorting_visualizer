@@ -1,0 +1,23 @@
+.code-container-section {
+  background-color: #d8e7ff;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+}
+.sort-name {
+  padding: 0.8rem;
+  text-align: center;
+}
+.code-container-section pre code {
+  letter-spacing: 1px;
+}
+@media only screen and (max-width: 601px) {
+  .sort-name {
+    padding: 0.5rem;
+  }
+  .code-container-section pre code {
+    letter-spacing: 0.4px;
+    font-size: 0.7rem;
+  }
+}

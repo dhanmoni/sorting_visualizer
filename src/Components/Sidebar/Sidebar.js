@@ -10,6 +10,7 @@ export default function Sidebar(props) {
     callBubbleSort,
     callInsertionSort,
     callSelectionSort,
+    //callQuickSort,
     speed,
     maxlength,
     isSorting,
@@ -92,6 +93,9 @@ export default function Sidebar(props) {
         <button className="button toggleButton" onClick={callInsertionSort}>
           Insertion Sort
         </button>
+        {/* <button className="button toggleButton" onClick={callQuickSort}>
+          Quick Sort
+        </button> */}
         {isSorting && (
           <button
             className="button"
